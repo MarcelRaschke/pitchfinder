@@ -9,7 +9,8 @@
     "lint": "eslint ./src/**/*.ts",
     "test": "mocha",
     "ci-test": "yarn && yarn lint && yarn test",
-    "prepublish": "yarn lint && yarn test && yarn build"
+    "prepublish": "yarn run snyk-protect && yarn lint && yarn test && yarn build",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -42,12 +43,16 @@
     "eslint-config-peterkhayes": "^2.2.0",
     "eslint-plugin-prettier": "^3.1.3",
     "expect": "^24.9.0",
-    "mocha": "^7.0.0",
+    "mocha": "^7.1.1",
     "mz": "^2.4.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3",
     "wav": "^1.0.0",
     "wav-decoder": "^1.1.0"
+  },
+  "snyk": true,
+  "dependencies": {
+    "@snyk/protect": "latest"
   }
 }
